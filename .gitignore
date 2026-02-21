@@ -1,0 +1,10 @@
+# Environment variables — never commit these
+client/.env
+server/.env
+
+# Dependencies — too large, reinstalled via npm install
+client/node_modules/
+server/node_modules/
+
+# Build output
+client/dist/

@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg: #0f0f0f;
+  --surface: #161616;
+  --surface2: #1e1e1e;
+  --border: #2a2a2a;
+  --border-hard: #3a3a3a;
+  --yellow: #d4f700;
+  --yellow-dim: rgba(212,247,0,0.12);
+  --yellow-border: rgba(212,247,0,0.3);
+  --red: #ff3333;
+  --green: #00e676;
+  --blue: #00b4ff;
+  --purple: #c77dff;
+  --text: #f0f0f0;
+  --muted: #666;
+  --muted2: #444;
+  /* Theme-aware extras — must always be defined */
+  --bg-hard: #000000;
+  --on-accent: #000000;
+  --ticker-bg: #000000;
+  --ticker-text: #d4f700;
+  --hero-text: #f0f0f0;
+  --hero-muted: #888;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'DM Sans', sans-serif;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  overscroll-behavior: none;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
+
+button { cursor: pointer; font-family: inherit; -webkit-tap-highlight-color: transparent; }
+
+#root::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ─── Keyframes ─────────────────── */
+
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+@keyframes glitch {
+  0%{transform:translate(0) skewX(0)}
+  15%{transform:translate(-2px,1px) skewX(-1deg)}
+  30%{transform:translate(2px,-1px) skewX(1deg)}
+  60%{transform:translate(1px,1px) skewX(-0.5deg)}
+  100%{transform:translate(0) skewX(0)}
+}
+
+@keyframes fadeUp {
+  from{opacity:0;transform:translateY(10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes fadeIn {
+  from{opacity:0} to{opacity:1}
+}
+
+@keyframes marquee {
+  from{transform:translateX(0)} to{transform:translateX(-50%)}
+}
+
+@keyframes slideUp {
+  from{opacity:0;transform:translateY(100%)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+@keyframes scaleIn {
+  from{opacity:0;transform:scale(0.93)}
+  to{opacity:1;transform:scale(1)}
+}
+
+@keyframes flashYellow {
+  0%,100%{background-color:transparent}
+  30%{background-color:rgba(212,247,0,0.15)}
+}
+
+@keyframes flashRed {
+  0%,100%{background-color:transparent}
+  30%{background-color:rgba(255,51,51,0.15)}
+}
+
+@keyframes flashGreen {
+  0%,100%{background-color:transparent}
+  30%{background-color:rgba(0,230,118,0.15)}
+}
+
+@keyframes numberPop {
+  0%{transform:scale(1)}
+  40%{transform:scale(1.14) translateY(-2px)}
+  70%{transform:scale(0.97)}
+  100%{transform:scale(1)}
+}
+
+@keyframes winnerReveal {
+  0%{opacity:0;transform:translateY(24px) scale(0.93)}
+  55%{transform:translateY(-5px) scale(1.02)}
+  80%{transform:translateY(1px) scale(0.99)}
+  100%{opacity:1;transform:translateY(0) scale(1)}
+}
+
+@keyframes shake {
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-5px) rotate(-0.5deg)}
+  40%{transform:translateX(5px) rotate(0.5deg)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}
+
+@keyframes potBump {
+  0%{transform:scale(1)}
+  25%{transform:scale(1.08);filter:brightness(1.3)}
+  100%{transform:scale(1);filter:brightness(1)}
+}
+
+@keyframes showBanner {
+  0%{transform:translateY(-100%);opacity:0}
+  60%{transform:translateY(3px)}
+  100%{transform:translateY(0);opacity:1}
+}
+
+@keyframes rowIn {
+  from{opacity:0;transform:translateX(-8px)}
+  to{opacity:1;transform:translateX(0)}
+}
+
+@keyframes borderFlash {
+  0%,100%{border-color:var(--yellow)}
+  50%{border-color:#fff;box-shadow:0 0 16px rgba(212,247,0,0.5)}
+}
+
+/* ─── Utility classes ────────────── */
+
+.anim-fadeUp  { animation: fadeUp  0.28s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-fadeIn  { animation: fadeIn  0.2s ease both; }
+.anim-scaleIn { animation: scaleIn 0.24s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-slideUp { animation: slideUp 0.32s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-winner  { animation: winnerReveal 0.55s cubic-bezier(0.22,1,0.36,1) both; }
+.anim-shake   { animation: shake   0.35s ease; }
+.anim-pop     { animation: numberPop 0.32s cubic-bezier(0.22,1,0.36,1); }
+.anim-flash-y { animation: flashYellow 0.4s ease; }
+.anim-flash-r { animation: flashRed    0.4s ease; }
+.anim-flash-g { animation: flashGreen  0.4s ease; }
+.anim-rowIn   { animation: rowIn    0.25s cubic-bezier(0.22,1,0.36,1) both; }
+
+.show-banner  { animation: showBanner 0.4s cubic-bezier(0.22,1,0.36,1) both; }
+.winner-border { animation: borderFlash 1.2s ease infinite; }
+
+.btn-press { transition: transform 0.07s ease, filter 0.07s ease; -webkit-tap-highlight-color: transparent; }
+.btn-press:active { transform: scale(0.95) !important; filter: brightness(0.8); }
+
+.pot-pop { animation: potBump 0.35s cubic-bezier(0.22,1,0.36,1); }
