@@ -19,7 +19,15 @@ const {
 const { calculateSettlement } = require("./settlementCalc");
 
 const app = express();
-app.use(cors({ origin: process.env.CLIENT_URL }));
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://teenpatti-tracker.vercel.app",
+    process.env.CLIENT_URL,
+  ].filter(Boolean),
+  methods: ["GET", "POST"],
+  credentials: true,
+}));
 app.use(express.json());
 
 const server = http.createServer(app);
